@@ -22,7 +22,7 @@ Follow these steps to configure the slash command in Slack:
 
   2. Click the "Enable Encryption Helpers" checkbox
 
-  3. Paste <COMMAND_TOKEN> into the kmsEncryptedToken environment variable and click encrypt
+  3. Paste <COMMAND_TOKEN> into the encryptedSlackToken environment variable and click encrypt
 
 Follow these steps to complete the configuration of your command API endpoint
 
@@ -41,7 +41,7 @@ Follow these steps to complete the configuration of your command API endpoint
 const AWS = require('aws-sdk');
 const qs = require('querystring');
 
-const kmsEncryptedToken = process.env.kmsEncryptedToken;
+const encryptedSlackToken = process.env.encryptedSlackToken;
 let token;
 
 
@@ -74,8 +74,8 @@ exports.handler = (event, context, callback) => {
     if (token) {
         // Container reuse, simply process the event with the key in memory
         processEvent(event, done);
-    } else if (kmsEncryptedToken && kmsEncryptedToken !== '<kmsEncryptedToken>') {
-        const cipherText = { CiphertextBlob: new Buffer(kmsEncryptedToken, 'base64') };
+    } else if (encryptedSlackToken && encryptedSlackToken !== '<encryptedSlackToken>') {
+        const cipherText = { CiphertextBlob: new Buffer(encryptedSlackToken, 'base64') };
         const kms = new AWS.KMS();
         kms.decrypt(cipherText, (err, data) => {
             if (err) {
