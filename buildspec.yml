@@ -10,6 +10,8 @@ phases:
   build:
     commands:
       - mocha lambda.js
+
 artifacts:
   files:
-    - **/*
+    - lambda.js
+    - node_modules/**/*
