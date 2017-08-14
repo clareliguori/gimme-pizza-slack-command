@@ -40,6 +40,7 @@ Follow these steps to complete the configuration of your command API endpoint
 
 const AWS = require('aws-sdk');
 const qs = require('querystring');
+const utils = require('./utilities.js');
 
 const encryptedSlackToken = process.env.encryptedSlackToken;
 let token;
@@ -58,14 +59,17 @@ function processEvent(event, callback) {
     const channel = params.channel_name;
     const commandText = params.text;
 
-    callback(null, `${user} invoked ${command} in ${channel} with the following text: ${commandText}`);
+  utils.orderPizza(
+    function(orderOutput) {
+      callback(null, `${user} ordered pizza in #${channel}. Result: ${unescape(orderOutput)}`);
+    }
+  );
 }
-
 
 exports.handler = (event, context, callback) => {
     const done = (err, res) => callback(null, {
         statusCode: err ? '400' : '200',
-        body: err ? (err.message || err) : JSON.stringify(res),
+        body: err ? (err.message || err) : res,
         headers: {
             'Content-Type': 'application/json',
         },
