@@ -1,0 +1,11 @@
+{
+  "name": "gimmepizzacommand",
+  "version": "1.0.0",
+  "description": "Order Pizza with Slack",
+  "main": "lambda.js",
+  "dependencies": {
+    "pizzapi": "^0.0.8",
+    "aws-sdk": "^2.54.0"
+  },
+  "private": "true"
+}
