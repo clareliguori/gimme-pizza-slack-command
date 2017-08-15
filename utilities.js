@@ -25,7 +25,7 @@ function getStoreInfo(store, previousOutput, finalCallback) {
   store.getInfo(
     function(storeData) {
       console.log("Store code: " + storeData.result.StoreID);
-      var output = previousOutput + `Ordered pizza from store #${storeData.result.StoreID} (${storeData.result.AddressDescription.replace(/\n/g, ", ")}).\n`;
+      var output = previousOutput + `Ordered pizza from Dominos store #${storeData.result.StoreID} (${storeData.result.AddressDescription.replace(/\n/g, ", ")}).`;
       getStoreMenu(store, output, finalCallback);
     }
   );
@@ -51,7 +51,7 @@ function getStoreMenu(store, previousOutput, finalCallback) {
         }
       }
       console.log(`Pepperoni: ${pepperoniPizzaCode}, Cheese: ${cheesePizzaCode}`);
-      var output = previousOutput + `\nOrdered ${pepperoniPizzaItemName} and ${cheesePizzaItemName}`;
+      var output = previousOutput + `\nItems: ${pepperoniPizzaItemName} and ${cheesePizzaItemName}`;
       placeOrder(store, [pepperoniPizzaCode, cheesePizzaCode], output, finalCallback);
     }
   );

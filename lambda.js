@@ -61,7 +61,7 @@ function processEvent(event, callback) {
 
   utils.orderPizza(
     function(orderOutput) {
-      callback(null, `${user} ordered pizza in #${channel}. Result: ${unescape(orderOutput)}`);
+      callback(null, `${user} asked for pizza in #${channel}.\n${orderOutput}`);
     }
   );
 }
