@@ -3,9 +3,13 @@
   "version": "1.0.0",
   "description": "Order Pizza with Slack",
   "main": "lambda.js",
+  "scripts": {
+    "start": "node server.js"
+  },
   "dependencies": {
     "pizzapi": "^0.0.8",
-    "aws-sdk": "^2.54.0"
+    "aws-sdk": "^2.54.0",
+    "express": "^4.13.3"
   },
   "private": "true"
 }
