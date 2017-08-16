@@ -61,7 +61,12 @@ function processEvent(event, callback) {
 
   utils.orderPizza(
     function(orderOutput) {
-      callback(null, `${user} asked for pizza in #${channel}.\n${orderOutput}`);
+      var commandOutput = {
+        "response_type": "in_channel",
+        "text": `${user} asked for pizza in #${channel}.\n${orderOutput}`
+      };
+
+      callback(null, JSON.stringify(commandOutput));
     }
   );
 }
