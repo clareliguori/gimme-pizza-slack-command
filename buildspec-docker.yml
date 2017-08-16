@@ -1,0 +1,9 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - $(aws ecr get-login)
+      - docker build -t gimme-pizza .
+      - docker tag gimme-pizza:latest $ECR_REGISTRY/gimme-pizza:latest
+      - docker push $ECR_REGISTRY/gimme-pizza:latest
