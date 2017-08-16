@@ -13,5 +13,5 @@ phases:
 
 artifacts:
   files:
-    - lambda.js
+    - *.js
     - node_modules/**/*
