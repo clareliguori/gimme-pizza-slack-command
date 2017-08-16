@@ -1,4 +1,4 @@
-# gimme-pizza-command
+# gimme-pizza-slack-command
 Slack command that orders a pizza from Domino's. For example: /gimmepizza
 
 Includes:
